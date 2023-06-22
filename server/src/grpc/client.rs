@@ -1,17 +1,13 @@
 //! gRPC client helpers implementation
 
-// FIXME import other microservices' GRPC clients
-// pub use svc_storage_client_grpc::adsb::rpc_service_client::RpcServiceClient as AdsbClient;
-use futures::lock::Mutex;
-use std::sync::Arc;
-pub use tonic::transport::Channel;
+pub use svc_storage_client_grpc::Clients;
+pub use svc_storage_client_grpc::FlightPlanClient;
 
 /// Struct to hold all gRPC client connections
 #[derive(Clone, Debug)]
 #[allow(missing_copy_implementations)]
 pub struct GrpcClients {
-    // FIXME clients here
-    // pub adsb: GrpcClient<AdsbClient<Channel>>,
+    pub storage: Clients,
 }
 
 /// Struct to define a gRPC client
@@ -115,12 +111,12 @@ macro_rules! grpc_client {
 // FIXME - call grpc_client macro for all required clients here. Eg:
 // grpc_client!(AdsbClient, "adsb");
 
-impl Default for GrpcClients {
+impl GrpcClients {
     /// Creates default clients
-    fn default() -> Self {
+    pub fn new(config: crate::config::Config) -> Self {
         GrpcClients {
-            // FIXME - add other clients here
-            // adsb: GrpcClient::<AdsbClient<Channel>>::new("ADSB_HOST_GRPC", "ADSB_PORT_GRPC"),
+            storage: Clients::new(config.storage_host_grpc, config.storage_port_grpc), // FIXME - add other clients here
+                                                                                       // adsb: GrpcClient::<AdsbClient<Channel>>::new("ADSB_HOST_GRPC", "ADSB_PORT_GRPC"),
         }
     }
 }

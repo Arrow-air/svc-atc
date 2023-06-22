@@ -14,6 +14,10 @@ pub struct Config {
     pub docker_port_grpc: u16,
     /// port to be used for REST server
     pub docker_port_rest: u16,
+    /// storage microservice host
+    pub storage_host_grpc: String,
+    /// storage microservice port
+    pub storage_port_grpc: u16,
     /// path to log configuration YAML file
     pub log_config: String,
 }
