@@ -31,3 +31,8 @@ NocoDB
 autonumber
 logtest
 oneshot
+ilike
+vertipad
+timeslot
+seccomp
+Lcov

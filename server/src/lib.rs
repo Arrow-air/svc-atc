@@ -12,10 +12,6 @@ pub mod grpc;
 
 pub use crate::config::Config;
 
-// --------------------------------------------------
-// START REST SECTION
-// This section should be removed if there is no REST interface
-// --------------------------------------------------
 pub use clap::Parser;
 /// rest implementation module
 pub mod rest;
@@ -27,10 +23,6 @@ pub struct Cli {
     #[arg(long)]
     pub openapi: Option<String>,
 }
-
-// --------------------------------------------------
-// END REST SECTION
-// --------------------------------------------------
 
 /// Initialized log4rs handle
 pub static LOG_HANDLE: OnceCell<Option<log4rs::Handle>> = OnceCell::const_new();

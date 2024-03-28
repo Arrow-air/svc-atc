@@ -12,12 +12,15 @@ use utoipa::OpenApi;
 #[openapi(
     paths(
         api::health_check,
-        api::acknowledge_flight_plan
+        api::acknowledge_flight_plan,
+        api::get_flight_plans,
     ),
     components(
         schemas(
             api::rest_types::AckRequest,
-            api::rest_types::AckStatus
+            api::rest_types::AckStatus,
+            api::rest_types::PointZ,
+            api::rest_types::FlightPlan
         )
     ),
     tags(
